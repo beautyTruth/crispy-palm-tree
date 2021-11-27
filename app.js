@@ -132,3 +132,5 @@ toDoList.addEventListener("click", function (evt) {
 
   localStorage.setItem("to-do-item", JSON.stringify(toDoContainer));
 });
+
+// Seek to do something, not to be somebody
