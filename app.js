@@ -158,6 +158,8 @@ let id = 0;
 // creating the addTodo function
 
 function addTodo(toDo, id, done, trash) {
+  if (trash) return;
+
   const toDoDone = done ? checkBtn : uncheckBtn;
   const toDoLine = done ? textLineThrough : "";
   const item = `
@@ -167,4 +169,10 @@ function addTodo(toDo, id, done, trash) {
                   <i class="fa fa-trash-o delete" status="delete" id="${id}"></i>
                   </li>
                   `;
+  const toDoItemPosition = "beforeend";
+  toDoList.insertAdjacentHTML(toDoItemPosition, item);
 }
+
+// addTodo("get some coffee", 0, false, false);
+// addTodo("get some coffee", 0, true, false);
+// addTodo("get some coffee", 0, true, true);
