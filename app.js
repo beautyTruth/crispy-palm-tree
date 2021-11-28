@@ -176,3 +176,33 @@ function addTodo(toDo, id, done, trash) {
 // addTodo("get some coffee", 0, false, false);
 // addTodo("get some coffee", 0, true, false);
 // addTodo("get some coffee", 0, true, true);
+
+// adding an item to the list when the ENTER key is pressed
+
+document.addEventListener("keyup", displayToDo);
+
+// adding an item to the list when the ENTER key is pressed
+
+toDoAddBtn.addEventListener("click", displayToDo);
+
+// displayToDo function
+
+function displayToDo(event) {
+  if (
+    event.keyCode === 13 ||
+    event.target.classList.value === "fa fa-plus-circle"
+  ) {
+    const toDo = input.value;
+    if (toDo) {
+      addTodo(toDo, id, false, false);
+      toDoContainer.push({
+        name: toDo,
+        id: id,
+        done: false,
+        trash: false,
+      });
+      id++;
+    }
+    input.value = "";
+  }
+}
