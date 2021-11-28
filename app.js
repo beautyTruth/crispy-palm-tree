@@ -206,3 +206,15 @@ function displayToDo(event) {
     input.value = "";
   }
 }
+
+// targeting dynamically created to do items
+
+toDoList.addEventListener("click", (event) => {
+  const toDoItem = event.target;
+  const toDoStatus = toDoItem.attributes.status.value;
+  if (toDoStatus === "complete") {
+    completeToDo(toDoItem);
+  } else if (toDoStatus === "delete") {
+    removeToDo(toDoItem);
+  }
+});
