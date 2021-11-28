@@ -207,6 +207,25 @@ function displayToDo(event) {
   }
 }
 
+// the completeToDo function
+
+function completeToDo(toDoItem) {
+  toDoItem.classList.toggle(checkBtn);
+  toDoItem.classList.toggle(uncheckBtn);
+  toDoItem.parentNode.querySelector(".text").classList.toggle(textLineThrough);
+
+  toDoContainer[toDoItem.id].done = toDoContainer[toDoItem.id].done
+    ? false
+    : true;
+}
+
+// the removeToDo function
+
+function removeToDo(toDoItem) {
+  toDoItem.parentNode.parentNode.removeChild(toDoItem.parentNode);
+  toDoContainer[toDoItem.id].trash = true;
+}
+
 // targeting dynamically created to do items
 
 toDoList.addEventListener("click", (event) => {
@@ -219,9 +238,9 @@ toDoList.addEventListener("click", (event) => {
 
   const toDoItem = event.target;
   const toDoStatus = toDoItem.attributes.status.value;
-  // if (toDoStatus === "complete") {
-  //   completeToDo(toDoItem);
-  // } else if (toDoStatus === "delete") {
-  //   removeToDo(toDoItem);
-  // }
+  if (toDoStatus === "complete") {
+    completeToDo(toDoItem);
+  } else if (toDoStatus === "delete") {
+    removeToDo(toDoItem);
+  }
 });
