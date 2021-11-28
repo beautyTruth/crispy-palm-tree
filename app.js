@@ -210,11 +210,18 @@ function displayToDo(event) {
 // targeting dynamically created to do items
 
 toDoList.addEventListener("click", (event) => {
+  if (
+    event.path[0].localName === "p" ||
+    event.path.localName === "li" ||
+    event.path.localName === "ul"
+  )
+    return;
+
   const toDoItem = event.target;
   const toDoStatus = toDoItem.attributes.status.value;
-  if (toDoStatus === "complete") {
-    completeToDo(toDoItem);
-  } else if (toDoStatus === "delete") {
-    removeToDo(toDoItem);
-  }
+  // if (toDoStatus === "complete") {
+  //   completeToDo(toDoItem);
+  // } else if (toDoStatus === "delete") {
+  //   removeToDo(toDoItem);
+  // }
 });
