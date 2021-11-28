@@ -138,3 +138,21 @@
 /*
 my code below
 */
+
+const clearBtn = document.querySelector(".clear");
+const toDoList = document.querySelector("#list");
+const toDoInput = document.querySelector("#input");
+const toDoAddBtn = document.querySelector(".fa-plus-circle");
+//==================================================
+
+// selecting the icon class names
+const checkBtn = "fa-check-circle";
+const uncheckBtn = "fa-circle-thin";
+const textLineThrough = "line-through";
+
+// creating the addTodo function
+
+function addTodo(toDo, id, done, trash) {
+  const toDoDone = done ? checkBtn : uncheckBtn;
+  const toDoLine = done ? textLineThrough : "";
+}
