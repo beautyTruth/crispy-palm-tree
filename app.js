@@ -150,9 +150,21 @@ const checkBtn = "fa-check-circle";
 const uncheckBtn = "fa-circle-thin";
 const textLineThrough = "line-through";
 
+// to do container
+
+let toDoContainer = [];
+let id = 0;
+
 // creating the addTodo function
 
 function addTodo(toDo, id, done, trash) {
   const toDoDone = done ? checkBtn : uncheckBtn;
   const toDoLine = done ? textLineThrough : "";
+  const item = `
+                <li class="item">
+                  <i class="fa ${toDoDone} complete" status="complete" id="${id}"></i>
+                  <p class="text ${toDoLine}">${toDo}</p> 
+                  <i class="fa fa-trash-o delete" status="delete" id="${id}"></i>
+                  </li>
+                  `;
 }
