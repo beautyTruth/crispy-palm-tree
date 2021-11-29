@@ -150,10 +150,35 @@ const checkBtn = "fa-check-circle";
 const uncheckBtn = "fa-circle-thin";
 const textLineThrough = "line-through";
 
-// to do container
+// the to do container
 
-let toDoContainer = [];
-let id = 0;
+// let toDoContainer = [];
+// let id = 0;
+
+let toDoContainer, id; // initialized, no values . . . yet
+
+let toDoData = localStorage.getItem("to-do-item");
+if (toDoData) {
+  toDoContainer = JSON.parse(toDoData);
+  id = toDoContainer.length;
+  loadToDoContainer(toDoContainer);
+} else {
+  toDoContainer = [];
+  id = 0;
+}
+
+function loadToDoContainer(array) {
+  array.forEach((item) => {
+    addTodo(item.name, item.id, item.done, item.trash);
+  });
+}
+
+// clear the local storage
+
+clearBtn.addEventListener("click", () => {
+  localStorage.clear();
+  location.reload();
+});
 
 // creating the addTodo function
 
@@ -201,6 +226,10 @@ function displayToDo(event) {
         done: false,
         trash: false,
       });
+      // persisting or updating to local storage
+
+      localStorage.setItem("to-do-item", JSON.stringify(toDoContainer));
+
       id++;
     }
     input.value = "";
@@ -243,4 +272,6 @@ toDoList.addEventListener("click", (event) => {
   } else if (toDoStatus === "delete") {
     removeToDo(toDoItem);
   }
+
+  localStorage.setItem("to-do-item", JSON.stringify(toDoContainer));
 });
